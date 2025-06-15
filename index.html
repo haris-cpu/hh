@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Kainat 🎂</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: #000;
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .page {
+      display: none;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .heading, .title-glow {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      color: #f39;
+      text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc, 0 0 30px #ff00cc;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff00cc; }
+      to { text-shadow: 0 0 30px #ff99ff; }
+    }
+
+    .photo {
+      width: 60vw;
+      max-width: 250px;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px auto;
+      border: 5px solid #fff;
+      box-shadow: 0 0 30px #f0f;
+    }
+
+    .typewriter {
+      font-size: 1.4rem;
+      margin: 20px auto;
+      width: 100%;
+      max-width: 600px;
+      animation: typing 4s steps(40, end);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background: #ff69b4;
+      color: #fff;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1493;
+    }
+
+    .love {
+      font-size: 1.5rem;
+      color: #ffb6c1;
+      margin-top: 20px;
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      font-size: 22px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      display: none;
+    }
+
+    .floating-icon {
+      position: fixed;
+      font-size: 24px;
+      animation: floatAnim 8s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      max-width: 700px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    @media (max-width: 768px) {
+      .heading, .title-glow {
+        font-size: 2rem;
+      }
+
+      .typewriter {
+        font-size: 1rem;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+
+      .love {
+        font-size: 1.2rem;
+      }
+
+      video {
+        width: 90% !important;
+        height: auto !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .heading, .title-glow {
+        font-size: 1.5rem;
+      }
+
+      .photo {
+        width: 70vw;
+      }
+
+      .typewriter {
+        font-size: 0.95rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+      }
+
+      .music-btn {
+        font-size: 18px;
+        padding: 4px 8px;
+        top: 5px;
+        right: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bgMusic" autoplay loop>
+  <source src="aq.mp3" type="audio/mpeg" />
+</audio>
+<button onclick="toggleMusic()" class="music-btn">🔊</button>
+
+<canvas id="canvas1"></canvas>
+<canvas id="canvas2"></canvas>
+<canvas id="canvas3"></canvas>
+<canvas id="canvas4"></canvas>
+<canvas id="canvas5"></canvas>
+<canvas id="canvas6"></canvas>
+<canvas id="canvas7"></canvas>
+
+<!-- Page Container -->
+<div class="container">
+  <section class="page active" id="page1">
+    <h1 class="heading">💖 Happy Birthday Kainat 💖</h1>
+    <div class="title-glow">World's Best Fiancée 💍</div>
+    <img src="1.jpg" alt="Kainat" class="photo" />
+    <p class="typewriter">From the first moment I saw you, my world changed forever.</p>
+    <p class="typewriter">You are the best gift that life has ever given me.</p>
+    <button onclick="nextPage()">Next ➡️</button>
+  </section>
+
+  <section class="page" id="page2">
+    <h2 class="heading">🌹 Our Story</h2>
+    <div class="title-glow">World's Best Smile 😊</div>
+    <p class="typewriter">I fell in love with your smile, your soul, and your strength.</p>
+    <p class="typewriter">Every moment with you feels like magic.</p>
+    <p class="typewriter">Your laugh is the rhythm of my heart.</p>
+    <button onclick="nextPage()">Next ➡️</button>
+  </section>
+
+  <section class="page" id="page3">
+    <h2 class="heading">💍 Forever Yours</h2>
+    <div class="title-glow">World's Best Partner 🤝</div>
+    <p class="typewriter">I promise to always be by your side – in every moment.</p>
+    <p class="typewriter">You are my today, and all of my tomorrows.</p>
+    <p class="typewriter">Every heartbeat of mine says your name.</p>
+    <button onclick="nextPage()">Next ➡️</button>
+  </section>
+
+  <section class="page" id="page4">
+    <h2 class="heading">🎉 Let’s Celebrate</h2>
+    <div class="title-glow">World's Best Heart ❤️</div>
+    <p class="typewriter">Here’s to your smile, your dreams, and your big heart.</p>
+    <p class="typewriter">You’re my sunshine, my moonlight, and every star in between.</p>
+    <p class="love">I Love You So Much, Kainat 💘</p>
+    <button onclick="nextPage()">Final Surprise 🎇</button>
+  </section>
+
+  <section class="page" id="page5">
+    <h1 class="heading">🎆 Happy Birthday Again 🎆</h1>
+    <div class="title-glow">World's Best Everything 🌍</div>
+    <p class="love">You're my everything. Here's to forever! 💑</p>
+    <p class="love">Here’s to writing our forever story — together. ✨</p>
+    <img src="1.jpg" alt="Fireworks" style="width: 90%; margin-top: 20px;" />
+    <button onclick="nextPage()">I'm Sorry 💔</button>
+  </section>
+
+  <section class="page" id="page6">
+    <h2 class="heading">😔 I'm Sorry</h2>
+    <div class="title-glow">Because You Matter The Most 💌</div>
+    <p class="typewriter">Sometimes words fail me, and I end up hurting the one I love the most.</p>
+    <p class="typewriter">I’m deeply sorry for anything I said or did to upset you.</p>
+    <p class="typewriter">Please forgive me, Kainat. You mean the world to me.</p>
+    <p class="love">Forever yours, even when I’m not perfect 💘</p>
+    <img src="1.jpg" alt="Sorry Image" class="photo" />
+    <button onclick="nextPage()">Final Page 🎥</button>
+  </section>
+
+<section class="page" id="page7">
+  <h2 class="heading">🎥 Special Memories</h2>
+  <div class="title-glow">Always be Happy💑</div>
+  
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <video id="video" width="100%" height="400px" controls style="border-radius: 20px; box-shadow: 0 0 20px #fff;">
+      <source src="hg.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <p class="love">Every second spent with you is a beautiful memory 💖</p>
+</section>
+
+</div>
+
+<!-- JS -->
+<script>
+  let currentPage = 1;
+  const totalPages = 7;
+
+  function nextPage() {
+    document.getElementById(`page${currentPage}`).classList.remove('active');
+    document.getElementById(`canvas${currentPage}`).style.display = 'none';
+    currentPage++;
+    if (currentPage <= totalPages) {
+      document.getElementById(`page${currentPage}`).classList.add('active');
+      document.getElementById(`canvas${currentPage}`).style.display = 'block';
+      if (currentPage === 5) startConfetti();
+    }
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    music.paused ? music.play() : music.pause();
+  }
+
+  // Floating hearts
+  const icons = ['❤️', '🎈', '⭐', '🌟', '💖', '🎂', '🎁', '💘', '🕊️', '💎', '🎆'];
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement('div');
+    el.classList.add('floating-icon');
+    el.innerText = icons[Math.floor(Math.random() * icons.length)];
+    el.style.left = `${Math.random() * 100}%`;
+    el.style.top = `${Math.random() * 100}%`;
+    el.style.fontSize = `${Math.random() * 24 + 16}px`;
+    el.style.animationDuration = `${Math.random() * 10 + 5}s`;
+    document.body.appendChild(el);
+  }
+
+  function startCanvasEffect(canvasId, color) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    const particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6
+      });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  // Canvas Effects
+  startCanvasEffect("canvas1", "#ff00ff");
+  startCanvasEffect("canvas2", "#00ffff");
+  startCanvasEffect("canvas3", "#ffcc00");
+  startCanvasEffect("canvas4", "#00ff99");
+  startCanvasEffect("canvas5", "#ff4444");
+  startCanvasEffect("canvas6", "#89CFF0");
+  startCanvasEffect("canvas7", "#FFD700");
+
+  // Initial canvas
+  document.getElementById("canvas1").style.display = 'block';
+
+  function startConfetti() {
+    const canvas = document.getElementById("canvas5");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const confetti = [];
+
+    for (let i = 0; i < 150; i++) {
+      confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 40 + 10,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+        tilt: Math.random() * 10 - 10,
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let c of confetti) {
+        ctx.beginPath();
+        ctx.fillStyle = c.color;
+        ctx.ellipse(c.x, c.y, c.r, c.r / 2, c.tilt, 0, 2 * Math.PI);
+        ctx.fill();
+        c.y += 1 + Math.random();
+        c.tilt += Math.random() * 0.1 - 0.05;
+        if (c.y > canvas.height) {
+          c.y = 0;
+          c.x = Math.random() * canvas.width;
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  window.onload = function () {
+    const audio = document.getElementById("bgMusic");
+    audio.volume = 0;
+    const fadeIn = setInterval(() => {
+      if (audio.volume < 1.0) {
+        audio.volume = Math.min(audio.volume + 0.02, 1.0);
+      } else {
+        clearInterval(fadeIn);
+      }
+    }, 200);
+  };
+</script>
+</body>
+</html>
